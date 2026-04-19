@@ -1,12 +1,23 @@
 spring:
   application:
     name: llongaiagent
+  datasource:
+    url: jdbc:postgresql://tzl-ai-rag-pg.pg.polardb.rds.aliyuncs.com:5432/tzl
+    username: my_root
+    password: 2534838591@asd
   ai:
     dashscope:
       api-key: sk-bbf7bd07faa44cdc9b5babcb2dbe8ee0
       chat:
         options:
           model: qwen3-max
+    vectorstore:
+      pgvector:
+      index-type: HNSW #索引类型
+      distance-type: COSINE_DISTANCE
+      dimensions: 1024 # 向量字段的维度
+      max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+
   # springdoc-openapi 接口文档项目配置
 springdoc:
   swagger-ui:
@@ -29,3 +40,8 @@ server:
   port: 8080
   servlet:
     context-path: /api
+
+# 官方的标准,但是丧失了灵活性，我们自定义一个
+#logging:
+#  level:
+#    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
