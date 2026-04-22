@@ -3,6 +3,8 @@ package com.tzl.llongaiagent.app;
 import com.tzl.llongaiagent.advisor.MyLoggerAdvisor;
 import com.tzl.llongaiagent.advisor.ReReadingAdvisor;
 import com.tzl.llongaiagent.chatmemoryreopsitory.FileBasedChatMemoryRepository;
+import com.tzl.llongaiagent.rag.LoveAppRAGCustomAdvisor;
+import com.tzl.llongaiagent.rag.QueryRewriter;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -137,16 +139,24 @@ public class LoveApp {
     private VectorStore loveAppVectorStore;
 
     // 云数据库的向量存储的存储器
-    @Resource
-    private VectorStore pgVectorVectorStore;
+//    @Resource
+//    private VectorStore pgVectorVectorStore;
 
     // 基于云知识库
     @Resource
     private Advisor loveAppRAGCloudAdvisor;
 
+    // 注入自定义的重写器
+    @Resource
+    private QueryRewriter queryRewriter;
+
     public String doChatWithRAG(String userMessage, String conversationID) {
+        // 查询重写:重写是重写用户的提问，所以这里在用户发送消息前，进行改写
+        String rewrittenMessage = queryRewriter.doQueryRewrite(userMessage);
+
         ChatResponse chatResponse = chatClient.prompt()
-                .user(userMessage)
+                // 使用改写后的查询
+                .user(rewrittenMessage)
                 .advisors(spec -> {
                     spec.param(ChatMemory.CONVERSATION_ID, conversationID);
                 })
@@ -155,15 +165,19 @@ public class LoveApp {
 
                 // 1.基于内存的知识库实现 : 应用 RAG 知识库问答, 核心是加一个知识库问答的顾问!!!
                 // 这里的QuestionAnswerAdvisor是用什么知识问答顾问,loveAppVectorStore是从哪个向量数据库中查询
-//                .advisors(QuestionAnswerAdvisor.builder(loveAppVectorStore).build())
+                .advisors(QuestionAnswerAdvisor.builder(loveAppVectorStore).build())
 
                 // 2.使用云知识库实现 :
                 // 应用 RAG 检索增强服务(基于云知识库)
-                .advisors(loveAppRAGCloudAdvisor)
+//                .advisors(loveAppRAGCloudAdvisor)
 
                 // 3.应用 RAG 检索增强服务(基于 PgVector 向量存储),使用的云数据库(阿里云serverless)
 //                .advisors(QuestionAnswerAdvisor.builder(pgVectorVectorStore).build())
 
+                // 4.应用自定义的 RAG 检索增强服务( 文档查询器 + 上下文增强器)
+//                .advisors(LoveAppRAGCustomAdvisor.createLoveAppRAGCustomAdvisor(
+//                        loveAppVectorStore,"单身"
+//                ))
                 .call()
                 .chatResponse();
         Assert.notNull(chatResponse, "AI 服务返回异常: chatResponse 为 null");

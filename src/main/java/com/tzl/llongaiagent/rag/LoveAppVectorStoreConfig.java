@@ -21,14 +21,27 @@ public class LoveAppVectorStoreConfig {
     // MarkDown的Reader,自定义的加载器
     private LoveAppDocumentLoader documentLoader;
 
+    @Resource
+    private MyTextSplitter myTextSplitter;
+
+    @Resource
+    private MyKeyWordEnricher enricher;
+
     @Bean
     public VectorStore loveAppVectorStore(EmbeddingModel dashscopeEmbeddingModel){
         // 构造SpringAI 内置的基于内存的向量数据库
         SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(dashscopeEmbeddingModel).build();
         // 通过自定义的 documentLoader 加载业务 Markdown 文档
         List<Document> documents = documentLoader.loadMarkDown();
+
+        // 使用自定义的文档切分器，自主切分文档
+//        List<Document> splitDocuments = myTextSplitter.splitDocuments(documents);
+
+        // 自动补充关键词元信息
+        List<Document> enrichDocuments = enricher.enrichDocuments(documents);
+
         // 把加载的文档存入向量数据库中
-        simpleVectorStore.add(documents);
+        simpleVectorStore.add(enrichDocuments);
         // 把该向量数据库返回,里面是有数据的
         return simpleVectorStore;
 

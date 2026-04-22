@@ -47,6 +47,9 @@ public class LoveAppDocumentLoader {
                 String fileName = resource.getFilename();
                 assert fileName != null;
 
+                // 提取文档的倒数第3个和倒数第2个字作为标签
+                String status = fileName.substring(fileName.length() - 6, fileName.length() - 4);
+
                 // MD文档的阅读器的配置设置
                 MarkdownDocumentReaderConfig config = MarkdownDocumentReaderConfig.builder()
                         // 遇到水平分割线（---）就分割成新文档
@@ -55,8 +58,10 @@ public class LoveAppDocumentLoader {
                         .withIncludeCodeBlock(false)
                         // 不读取引用块（> 开头）
                         .withIncludeBlockquote(false)
-                        // 附加元数据：文件名 ,作用： 给解析后的文档打上标签，记录这个内容来自哪个文件。
+                        // 添加元数据: 文件名 ,作用： 给解析后的文档打上标签，记录这个内容来自哪个文件。
                         .withAdditionalMetadata("filename", fileName)
+                        // 添加元信息: 状态
+                        .withAdditionalMetadata("status", status)
                         .build();
 
                 // 创建MarkDown阅读器,传入资源与配置
