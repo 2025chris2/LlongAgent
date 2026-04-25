@@ -16,6 +16,7 @@ import org.springframework.ai.chat.memory.*;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.tool.ToolCallback;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -28,7 +29,7 @@ import java.util.List;
 public class LoveApp {
 
     // 聊天客户端
-    private ChatClient chatClient;
+    private final ChatClient chatClient;
 
 
 
@@ -186,4 +187,27 @@ public class LoveApp {
         log.info("content: {}", content);
         return content;
     }
+
+
+    // AI 调用工具能力
+    @Resource
+    private ToolCallback[] allTools;
+
+    public String chatWithTools(String userMessage, String conversationId) {
+        ChatResponse chatResponse = chatClient.prompt()
+                .user(userMessage)
+                .advisors(spec -> spec.param(
+                        ChatMemory.CONVERSATION_ID, conversationId
+                ))
+                .advisors(new MyLoggerAdvisor())
+                // 已经构建好的 ToolCallback 实例,当参数进行传入
+                .toolCallbacks(allTools)
+                .call()
+                .chatResponse();
+
+        String content = chatResponse.getResult().getOutput().getText();
+        log.info("content: {}",content);
+        return content;
+    }
+
 }

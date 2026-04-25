@@ -1,10 +1,10 @@
 spring:
   application:
     name: llongaiagent
-  datasource:
-    url: jdbc:postgresql://tzl-ai-rag-pg.pg.polardb.rds.aliyuncs.com:5432/tzl
-    username: my_root
-    password: 2534838591@asd
+#  datasource:
+#    url: jdbc:postgresql://tzl-ai-rag-pg.pg.polardb.rds.aliyuncs.com:5432/tzl
+#    username: my_root
+#    password: 2534838591@asd
   ai:
     dashscope:
       api-key: sk-bbf7bd07faa44cdc9b5babcb2dbe8ee0
@@ -40,6 +40,8 @@ server:
   port: 8080
   servlet:
     context-path: /api
+searchAPi:
+  apiKey: i2Grugyg9RpYS6SeRDipcwtW
 
 # 官方的标准,但是丧失了灵活性，我们自定义一个
 #logging:
