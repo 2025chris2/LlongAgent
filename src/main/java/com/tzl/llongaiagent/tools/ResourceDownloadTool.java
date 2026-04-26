@@ -16,7 +16,7 @@ public class ResourceDownloadTool {
 
     @Tool(description = "Download a resource from a given URL")
     public String downloadResource(@ToolParam(description = "URL of the resource to download") String url, @ToolParam(description = "Name of file to save the download resource") String fileName) {
-        String fileDir = FileConstant.FILE_SAVE_DIR + "/download";
+        String fileDir = Paths.get(FileConstant.FILE_SAVE_DIR, "download").toString();
         String filePath = Paths.get(fileDir, fileName).toString();
         try{
             FileUtil.mkdir(fileDir);
@@ -26,5 +26,4 @@ public class ResourceDownloadTool {
             return "Error downloading resource: " + e.getMessage();
         }
     }
-
 }

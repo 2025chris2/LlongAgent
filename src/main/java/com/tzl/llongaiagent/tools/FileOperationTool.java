@@ -8,6 +8,7 @@ import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.nio.file.Paths;
 
 /***
@@ -16,7 +17,7 @@ import java.nio.file.Paths;
 public class FileOperationTool {
 
     // 定义一个文件保存的路径
-    private final String FILE_DIR = FileConstant.FILE_SAVE_DIR + "/file";
+    private final String FILE_DIR = Paths.get(FileConstant.FILE_SAVE_DIR, "file").toString();
 
     // 这里的读写操作返回的都是String类型,是因为还要把结果返回给AI,如果是别的类型,AI可能还要转换,犯错
     @Tool(description = "Read content from a file")
