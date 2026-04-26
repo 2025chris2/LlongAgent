@@ -33,8 +33,7 @@ public class TerminalOperationTool {
             ProcessBuilder builder = new ProcessBuilder("cmd", "/c", command);
             Process process = builder.start();
             // 启动子进程执行系统命令：
-            // Runtime.getRuntime() 获取当前 Java 应用的运行时环境
-            // .exec(command) 在新进程中执行传入的终端命令
+
 
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(process.getInputStream()))) {
