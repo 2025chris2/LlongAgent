@@ -15,7 +15,8 @@ import java.nio.file.Paths;
 public class ResourceDownloadTool {
 
     @Tool(description = "Download a resource from a given URL")
-    public String downloadResource(@ToolParam(description = "URL of the resource to download") String url, @ToolParam(description = "Name of file to save the download resource") String fileName) {
+    public String downloadResource(@ToolParam(description = "URL of the resource to download") String url,
+                                   @ToolParam(description = "Name of file to save the download resource") String fileName) {
         String fileDir = Paths.get(FileConstant.FILE_SAVE_DIR, "download").toString();
         String filePath = Paths.get(fileDir, fileName).toString();
         try{

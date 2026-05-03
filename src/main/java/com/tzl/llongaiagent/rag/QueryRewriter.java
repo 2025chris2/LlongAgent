@@ -14,8 +14,8 @@ public class QueryRewriter {
     // 接口承接实现类的 初始化方式
     private QueryTransformer queryTransformer;
 
-    public QueryRewriter(ChatModel dashscopeChatModel) {
-        ChatClient.Builder builder = ChatClient.builder(dashscopeChatModel);
+    public QueryRewriter(ChatModel chatModel) {
+        ChatClient.Builder builder = ChatClient.builder(chatModel);
         // 创建查询重写转换器
         queryTransformer = RewriteQueryTransformer.builder()
                 .chatClientBuilder(builder)

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: llong-image-search-mcp-server
+  ai:
+    mcp:
+      server:
+        name: llong-image-search-mcp-server
+        version: 0.0.1
+        type: SYNC
+        stdio: true
+    # Stdio
+  main:
+    web-application-type: none
+    banner-mode: off
+pexels:
+  api-key: fW7eq1hqQT6AZLyHrcT5rYJr5Qz2wJrmzQJeVsechlaO0CT7MARyfOMS

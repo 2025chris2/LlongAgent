@@ -3,7 +3,6 @@ package com.tzl.llongaiagent.tools;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IORuntimeException;
 import com.tzl.llongaiagent.constant.FileConstant;
-import okio.Path;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.stereotype.Component;

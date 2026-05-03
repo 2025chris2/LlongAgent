@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: llong-image-search-mcp-server
+  ai:
+    mcp:
+      server:
+        name: llong-image-search-mcp-server
+        version: 0.0.1
+        enabled: true
+        sse-endpoint: /sse
+        type: SYNC
+        # SSE
+        stdio: false
+pexels:
+  api-key: fW7eq1hqQT6AZLyHrcT5rYJr5Qz2wJrmzQJeVsechlaO0CT7MARyfOMS
+
+

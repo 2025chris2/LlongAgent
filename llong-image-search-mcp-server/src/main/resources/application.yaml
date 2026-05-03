@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: llong-image-search
+  profiles:
+    active: sse #stdio
+server:
+  port: 8127

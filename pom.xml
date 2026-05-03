@@ -50,18 +50,32 @@
 <!--        </dependency>-->
 
         <!-- PDF生成库 -->
- <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
+        <!-- iText 7 核心（正确坐标，支持中文） -->
         <dependency>
             <groupId>com.itextpdf</groupId>
-            <artifactId>itext-core</artifactId>
-            <version>9.5.0</version>
+            <artifactId>kernel</artifactId>
+            <version>7.2.5</version>
         </dependency>
-<!-- https://mvnrepository.com/artifact/com.itextpdf/font-asian -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>7.2.5</version>
+        </dependency>
+        <!-- 亚洲字体（中文支持） -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>font-asian</artifactId>
-            <version>9.5.0</version>
+            <version>7.2.5</version>
         </dependency>
+
+
+        <!-- mcp服务端依赖 -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-mcp-client</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
 
 
         <!-- Jsoup依赖导入 -->
@@ -80,19 +94,18 @@
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-markdown-document-reader</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </dependency>
-        <!-- RAG顾问的依赖导入 -->
-        <!-- 1.1.4 必须单独加这个，否则无 RetrievalAugmentationAdvisor -->
+        <!-- RAG顾问的依赖导入（必须加，否则无 RetrievalAugmentationAdvisor） -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-rag</artifactId>
-            <version>1.1.4</version>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-advisors-vector-store</artifactId>
-            <version>1.1.4</version>
+            <version>1.1.0</version>
         </dependency>
         <!-- Knife4j依赖,类似swagger的文档接口的工具 -->
         <dependency>
@@ -101,38 +114,18 @@
             <version>4.4.0</version>
         </dependency>
 
-        <!-- 引入灵积依赖 -->
+        <!-- OpenAI 兼容模式（阿里云通义千问） -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dashscope-sdk-java</artifactId>
-            <version>2.22.10</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-simple</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
+            <version>1.1.0</version>
         </dependency>
+
         <!-- Spring AI Alibaba Agent Framework -->
         <dependency>
             <groupId>com.alibaba.cloud.ai</groupId>
             <artifactId>spring-ai-alibaba-agent-framework</artifactId>
             <version>1.1.2.0</version>
-        </dependency>
-
-        <!-- DashScope ChatModel 支持（如果使用其他模型，请跳转 Spring AI 文档选择对应的 starter） -->
-        <dependency>
-            <groupId>com.alibaba.cloud.ai</groupId>
-            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
-            <version>1.1.2.0</version>
-        </dependency>
-
-        <!-- langchain4j的依赖 -->
-        <!--> AI依赖的导入 <-->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-community-dashscope-spring-boot-starter</artifactId>
-            <version>1.12.2-beta22</version>
         </dependency>
 
         <dependency>

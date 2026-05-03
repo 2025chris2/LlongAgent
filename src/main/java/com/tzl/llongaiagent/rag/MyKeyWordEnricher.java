@@ -15,12 +15,12 @@ import java.util.List;
 public class MyKeyWordEnricher {
 
     @Resource
-    private ChatModel dashscopeChatModel;
+    private ChatModel chatModel;
 
     public List<Document> enrichDocuments(List<Document> documents) {
         // 第一个参数是给一个ChatModel，第二个元信息的数量,
         // 通过LLM给文档进行一个元信息分类
-        KeywordMetadataEnricher enricher = new KeywordMetadataEnricher(dashscopeChatModel, 5);
+        KeywordMetadataEnricher enricher = new KeywordMetadataEnricher(chatModel, 5);
         // 返回增强后的文档
         return enricher.apply(documents);
     }

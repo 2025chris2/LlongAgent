@@ -1,5 +1,6 @@
 ### 忽略application-local.yaml文件 ###
 application-local.yaml
+mcp-servers.json
 # 对话文件
 tmp
 

@@ -77,4 +77,14 @@ class LoveAppTest {
 
 
     }
+
+
+
+    @Test
+    void chatWithMcp() {
+        String chatId =UUID.randomUUID().toString();
+        String message = "给我月亮的照片";
+        String answer = loveApp.chatWithMcp(message, chatId);
+        Assertions.assertNotNull(answer);
+    }
 }

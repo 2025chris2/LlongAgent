@@ -17,6 +17,7 @@ import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.tool.ToolCallback;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -40,9 +41,9 @@ public class LoveApp {
 
     /***
      * 初始化 AI 客户端,chatClient
-     * @param dashscopeModel 灵积的大模型,通过依赖自动注入的
+     * @param chatModel 大模型,通过依赖自动注入的
      */
-    public LoveApp(ChatModel dashscopeModel){
+    public LoveApp(ChatModel chatModel){
 
         // 1.初始化基于内存的对话记忆仓库
 //        ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
@@ -74,7 +75,7 @@ public class LoveApp {
         ReReadingAdvisor reReadingAdvisor = new ReReadingAdvisor();
 
         // 对所有的请求生效
-        chatClient = ChatClient.builder(dashscopeModel)
+        chatClient = ChatClient.builder(chatModel)
                 .defaultSystem(SYSTEM_PROMPT)
                 //下面这行代码的顾问是完全的，下下行是比较轻盈的,所以这里用下下行的代码
 //              .defaultAdvisors(memoryAdvisor,loggerAdvisor,reReadingAdvisor)
@@ -136,16 +137,16 @@ public class LoveApp {
     // AI 恋爱知识库问答功能
 
     // 基于内存的知识库
-    @Resource
-    private VectorStore loveAppVectorStore;
+//    @Resource
+//    private VectorStore loveAppVectorStore;
 
     // 云数据库的向量存储的存储器
 //    @Resource
 //    private VectorStore pgVectorVectorStore;
 
-    // 基于云知识库
-    @Resource
-    private Advisor loveAppRAGCloudAdvisor;
+    // 基于云知识库（待后续接入 OpenAI 兼容的知识库服务）
+//    @Resource
+//    private Advisor loveAppRAGCloudAdvisor;
 
     // 注入自定义的重写器
     @Resource
@@ -166,7 +167,7 @@ public class LoveApp {
 
                 // 1.基于内存的知识库实现 : 应用 RAG 知识库问答, 核心是加一个知识库问答的顾问!!!
                 // 这里的QuestionAnswerAdvisor是用什么知识问答顾问,loveAppVectorStore是从哪个向量数据库中查询
-                .advisors(QuestionAnswerAdvisor.builder(loveAppVectorStore).build())
+//                .advisors(QuestionAnswerAdvisor.builder(loveAppVectorStore).build())
 
                 // 2.使用云知识库实现 :
                 // 应用 RAG 检索增强服务(基于云知识库)
@@ -208,6 +209,33 @@ public class LoveApp {
         String content = chatResponse.getResult().getOutput().getText();
         log.info("content: {}",content);
         return content;
+    }
+
+    // AI 调用 Mcp 服务 , 从这开始从dashscope换成了openai的接口
+
+    // 自动获取注入的mcp工具类，包括子项目的自定义的mcp工具
+    @Resource
+    private ToolCallbackProvider toolCallbackProvider;
+
+    /***
+     * AI 恋爱报告功能(调用Mcp)
+     * @param userMessage
+     * @param conversationId
+     * @return
+     */
+    public String chatWithMcp(String userMessage, String conversationId) {
+        ChatResponse chatResponse = chatClient.prompt()
+                .user(userMessage)
+                .advisors(advisorSpec -> advisorSpec.param(
+                        ChatMemory.CONVERSATION_ID, conversationId
+                ))
+                .advisors(new MyLoggerAdvisor())
+                .toolCallbacks(toolCallbackProvider)
+                .call()
+                .chatResponse();
+        String text = chatResponse.getResult().getOutput().getText();
+        log.info("content:{}", text);
+        return text;
     }
 
 }

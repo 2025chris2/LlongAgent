@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 /***
- * 恋爱大师向量数据库配置(初始化基于内存的向量数据库(SimpleVectorStore类) Bean)
- */
+// * 恋爱大师向量数据库配置(初始化基于内存的向量数据库(SimpleVectorStore类) Bean)
+// */
 @Configuration
 public class LoveAppVectorStoreConfig {
 
@@ -28,20 +28,21 @@ public class LoveAppVectorStoreConfig {
     private MyKeyWordEnricher enricher;
 
     @Bean
-    public VectorStore loveAppVectorStore(EmbeddingModel dashscopeEmbeddingModel){
+    public VectorStore loveAppVectorStore(EmbeddingModel embeddingModel){
         // 构造SpringAI 内置的基于内存的向量数据库
-        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(dashscopeEmbeddingModel).build();
+        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
         // 通过自定义的 documentLoader 加载业务 Markdown 文档
         List<Document> documents = documentLoader.loadMarkDown();
 
         // 使用自定义的文档切分器，自主切分文档
-//        List<Document> splitDocuments = myTextSplitter.splitDocuments(documents);
+        List<Document> splitDocuments = myTextSplitter.splitDocuments(documents);
 
         // 自动补充关键词元信息
         List<Document> enrichDocuments = enricher.enrichDocuments(documents);
 
         // 把加载的文档存入向量数据库中
-        simpleVectorStore.add(enrichDocuments);
+        simpleVectorStore.add(documents);
+
         // 把该向量数据库返回,里面是有数据的
         return simpleVectorStore;
 

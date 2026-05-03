@@ -20,8 +20,8 @@
 //
 //
 //    @Bean
-//    public VectorStore pgVectorVectorStore(JdbcTemplate jdbcTemplate, EmbeddingModel dashscopeEmbeddingModel) {
-//        return PgVectorStore.builder(jdbcTemplate, dashscopeEmbeddingModel)
+//    public VectorStore pgVectorVectorStore(JdbcTemplate jdbcTemplate, EmbeddingModel embeddingModel) {
+//        return PgVectorStore.builder(jdbcTemplate, embeddingModel)
 //                .dimensions(1024)                    // Optional: defaults to model dimensions or 1536
 //                .distanceType(COSINE_DISTANCE)       // Optional: defaults to COSINE_DISTANCE
 //                .indexType(HNSW)                     // Optional: defaults to HNSW
