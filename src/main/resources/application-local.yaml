@@ -22,7 +22,6 @@ spring:
           connections:
             server1:
               url: http://localhost:8127/sse
-
         # 以下是 本地mcp的配置
 #        stdio:
 #          servers-configuration: classpath:mcp-servers.json

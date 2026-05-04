@@ -1,0 +1,157 @@
+使用过程的发型
+ 此 AI 智能体 能够自我修复，自我调整策略，自我适应
+
+
+
+ 2026-05-04T17:37:04.030+08:00  INFO 58780 --- [llongaiagent] [           main] c.t.l.advisor.MyLoggerAdvisor
+     : TZL的Require日志打印:为了完成这个任务，我将分步骤进行。首先，我会在网络上搜索上海静安区5公里范围内的适合约会的地
+  点。然后，我会收集这些地点的一些网络图片，并根据这些信息来制定一个详细的约会计划。最后，我会把这份约会计划生成为PDF格
+  式的文件。
+
+  现在，我将开始第一步：搜索适合约会的地点。
+  2026-05-04T17:37:04.030+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : llongManus的思考:
+  为了完成这个任务，我将分步骤进行。首先，我会在网络上搜索上海静安区5公里范围内的适合约会的地点。然后，我会收集这些地点
+  的一些网络图片，并根据这些信息来制定一个详细的约会计划。最后，我会把这份约会计划生成为PDF格式的文件。
+
+  现在，我将开始第一步：搜索适合约会的地点。
+  2026-05-04T17:37:04.030+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : llongManus选择了1个工具来使用
+  2026-05-04T17:37:04.032+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : 工具名称：searchWeb，参数：{"query": "上海静安区 5公里内 约会地点"}
+  2026-05-04T17:37:08.935+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : 工具 searchWeb 返回的结果：{"position":1,"title":"上海静安新晋清真宝藏!海鲜控必冲🍴","link":"https://mbd.baidu.c
+  om/newspage/data/dtlandingsuper?nid=dt_4212740173781741080","displayed_link":"炎宝食探","snippet":"在上海生活了7年的
+  回族女生来分享一家近期挖到的清真宝藏餐厅——地中海阿丽兰朵!这家藏在静安区pac购物中心的餐厅,离昌平路地铁站也就三五分钟步
+  行路,交通超方便,约会聚餐都超合适～最近上海清真餐厅井喷式开业,但这家阿丽兰朵不仅好吃,还巨好看!地中海菜系搭配海鲜为主打
+  ,一进去就被那氛围美到了,环境超有格调...","snippet_highlighted_words":["上海","静安区","约会"],"date":"2026年3月12日",
+  "thumbnail":"https://t9.baidu.com/it/u=903188170,3697038218&fm=3031&app=3031&size=re3,2&q=75&n=0&g=4n&f=JPEG&fmt=auto
+  &maxorilen2heic=2000000?s=2BF86C874022BCEE120D1D3903006043"},{"position":2,"title":"上海情侣约会|必打卡14个免费景点(
+  静安区)下-大众点评","link":"https://m.dianping.com/ugcdetail/185377683?bizType=29","displayed_link":"大众点评网","sni
+  ppet":"🔟「愚园路历史风貌保护区」🕐营业时间:周一日日全天06:00到22:00。🍭马路西至中山公园,东至静安寺。马路两边的梧桐树
+  长得非常高大。梧桐树下的有些咖啡厅装修风格很小清新,走累了,可以在这里小憩。💖路边各种潮流元素店琳琅满目是年轻人的最爱
+  。 1⃣1⃣「老城隍庙」⛩上海市的买金子的最佳打开地,...","snippet_highlighted_words":["🔟「愚园路历史风貌保护区」🕐营业时间
+  周一日日全天06:00到22:00。🍭马路西至中山公园,东至静安寺","老城隍庙"]},{"position":3,"title":"上海|
+  三家适合约会喝小酒的美丽餐厅 - 手机马蜂窝","link":"https://m.mafengwo.cn/gonglve/ziyouxing/248779.html","displayed_li
+  nk":"马蜂窝","snippet":"地点在静安嘉里中心对面,被一道曲线优美的灰墙包围着,透过开口隐约可以看见院子里的这颗
+  广西橘树,树龄80岁了,枝叶间挂满累累果实。 入内后,庭院豁然开朗。园艺师在这里种了上百种植物,随着一年四季的流转,会呈现不
+  同景色:春天有樱花和橙花的粉白、夏季有石榴树的火红、秋天有橘子的橙黄。繁忙的静安区正中央有这...","snippet_highlighted_
+  words":["地点在静安嘉里中心对面"],"thumbnail":"https://t8.baidu.com/it/u=3637943652,1041777659&fm=3031&app=3031&size=
+  re3,2&q=75&n=0&g=4n&f=JPEG&fmt=auto&maxorilen2heic=2000000?s=B6521CC77452A7C65069E00C0300F053"},{"positi
+
+  ──── (221 lines hidden) ─────────────────────────────────────────────────────────────────────────────────────────────
+  园路历史风貌保护区**\n  - 散步于梧桐树下的街道，感受老上海的氛围\n  - 参观沿途的小清新咖啡厅，享受一杯咖啡和点心\n  -
+   探索路边各种潮流元素店\n  ![](E:\\java\\AI\\AI super
+  agent\\llongaiagent\\tmp\\download\\yuyuan_road_historic_area.jpg)\n\n**傍晚：**\n- **静安嘉里中心附近美丽餐厅**\n  -
+   享用晚餐，体验高端雅致的用餐环境\n  - 餐后可逛逛商场，享受购物乐趣\n  ![](E:\\java\\AI\\AI super
+  agent\\llongaiagent\\tmp\\download\\jingan_kerry_center_restaurant.jpg)\n\n**夜晚：**\n- **静安雕塑公园**\n  -
+  夜间参观雕塑公园，欣赏现代艺术作品\n  - 享受宁静的夜晚氛围，拍照留念\n  ![](E:\\java\\AI\\AI super
+  agent\\llongaiagent\\tmp\\download\\jingan_sculpture_park.jpg)\n- **大宁灵石公园**\n  -
+  如果时间允许，可以前往大宁灵石公园夜游\n  - 享受公园内的自然风光与宁静\n  ![](E:\\java\\AI\\AI super
+  agent\\llongaiagent\\tmp\\download\\daning_lingshi_park.jpg)"}
+  2026-05-04T17:41:28.394+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : 工具 generatePDF 返回的结果："PDF generated successfully to: E:\\java\\AI\\AI super
+  agent\\llongaiagent\\tmp\\pdf\\date_plan.pdf"
+  2026-05-04T17:41:28.394+08:00  INFO 58780 --- [llongaiagent] [           main] com.tzl.llongaiagent.agent.BaseAgent
+     : Executing step 14/20
+  2026-05-04T17:41:28.395+08:00  INFO 58780 --- [llongaiagent] [           main] c.t.l.advisor.MyLoggerAdvisor
+     : TZL的Request日志打印:{}
+  我是Advisors中共享的内容:null
+  2026-05-04T17:41:39.895+08:00  INFO 58780 --- [llongaiagent] [           main] c.t.l.advisor.MyLoggerAdvisor
+     : TZL的Require日志打印:约会计划的PDF文件已经成功生成，并保存在指定位置。这份详细的约会指南包括了上海静安区5公里内
+  五个推荐地点的信息以及相关图片，旨在为您的约会提供一个美好的体验。
+
+  您可以下载这个PDF文件来查看完整的约会计划。如果您对这份计划有任何其他要求或需要进一步的帮助，请随时告诉我。如果没有其
+  他需求，我们的任务就完成了。
+
+  ![](E:\java\AI\AI super agent\llongaiagent\tmp\pdf\date_plan.pdf)
+
+  如果您满意当前的结果并且没有更多的请求，我将结束这次交互。感谢您的使用！
+  2026-05-04T17:41:39.895+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : llongManus的思考: 约会计划的PDF文件已经成功生成，并保存在指定位置。这份详细的约会指南包括了上海静安区5公里内五个
+  推荐地点的信息以及相关图片，旨在为您的约会提供一个美好的体验。
+
+  您可以下载这个PDF文件来查看完整的约会计划。如果您对这份计划有任何其他要求或需要进一步的帮助，请随时告诉我。如果没有其
+  他需求，我们的任务就完成了。
+
+  ![](E:\java\AI\AI super agent\llongaiagent\tmp\pdf\date_plan.pdf)
+
+  如果您满意当前的结果并且没有更多的请求，我将结束这次交互。感谢您的使用！
+  2026-05-04T17:41:39.895+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : llongManus选择了1个工具来使用
+  2026-05-04T17:41:39.895+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : 工具名称：doTerminate，参数：{}
+  2026-05-04T17:41:39.896+08:00  INFO 58780 --- [llongaiagent] [           main] c.tzl.llongaiagent.agent.ToolCallAgent
+     : 工具 doTerminate 返回的结果："任务结束"
+
+  Process finished with exit code 0为什么每次工具调用都是1个？
+
+● 这不是代码限制，是 AI 模型（qwen-max）自己的策略选择。从你的日志里能看到，step 2 模型确实同时调用了 5 个工具：
+
+  llongManus选择了5个工具来使用
+  工具名称：scrapeWebPage，参数：{...}
+  工具名称：scrapeWebPage，参数：{...}
+  工具名称：scrapeWebPage，参数：{...}
+  工具名称：scrapeWebPage，参数：{...}
+  工具名称：scrapeWebPage，参数：{...}
+
+  但这 5 个 scrape
+  返回的结果很差（大众点评的内容大多是空的），于是模型自己调整了策略，改为逐点"搜索→下载→下一个"的串行方式。这是 LLM
+  推理层面的行为，不是你的 Java 代码限制的。
+
+  想让模型更激进地并行调用工具，可以修改 llongManus 的 NEXT_STEP_PROMPT，加一句明确指令：
+
+  When you need to gather information from multiple independent sources,
+  call all the relevant tools simultaneously in a single step instead of one by one.
+
+  这样模型会倾向于同时发多个工具调用。
+
+✻ Cooked for 35s
+
+❯ 这里的5个工具是同一个工具么？为什么只看到了websearch
+
+● 是同一个工具。step 2 调用的是 5 个 scrapeWebPage（即 WebScrapingTool），只是给了 5 个不同的
+  URL。这是模型自己的行为——它想一次性把搜索结果里的 5 个链接都抓取一遍。
+
+  至于为什么后面只看到 searchWeb，这是因为模型在 step 3 发现 scrap
+  返回的质量很差（大众点评几乎抓不到内容），就切换了策略：改为"搜索→找到图片→下载图片"三步循环。这个策略下，searchWeb
+  自然就成了每轮都会用到的工具。
+
+  完整的工具使用序列：
+
+  ┌──────┬────────────────────────────────┬───────────┐
+  │ Step │              工具              │   数量    │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 1    │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 2    │ scrapeWebPage                  │ 5（并行） │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 3    │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 4    │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 5    │ downloadResource               │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 6    │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 7    │ downloadResource               │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 8    │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 9    │ downloadResource               │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 10   │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 11   │ downloadResource               │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 12   │ searchWeb                      │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 13   │ downloadResource + generatePDF │ 1         │
+  ├──────┼────────────────────────────────┼───────────┤
+  │ 14   │ doTerminate                    │ 1         │
+  └──────┴────────────────────────────────┴───────────┘
+
+  模型其实用了 5 种不同工具（searchWeb、scrapeWebPage、downloadResource、generatePDF、doTerminate），只是 searchWeb
+  占比最高，因为"搜索"是这个任务的核心步骤。这不是代码问题，是 LLM 根据任务本身的规划行为。
+
+

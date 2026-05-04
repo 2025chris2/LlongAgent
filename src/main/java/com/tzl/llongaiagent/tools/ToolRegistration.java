@@ -23,6 +23,7 @@ public class ToolRegistration {
         TerminalOperationTool terminalOperationTool = new TerminalOperationTool();
         WebScrapingTool webScrapingTool = new WebScrapingTool();
         WebSearchTool webSearchTool = new WebSearchTool(api_key);
+        TerminateTool terminateTool = new TerminateTool();
 
         // ToolCallbacks: 把一系列的普通的对象，转化成工具，但是对象必须要有@Tool注解
         return ToolCallbacks.from(
@@ -31,7 +32,8 @@ public class ToolRegistration {
                 resourceDownloadTool,
                 terminalOperationTool,
                 webScrapingTool,
-                webSearchTool
+                webSearchTool,
+                terminateTool
         );
     }
 
