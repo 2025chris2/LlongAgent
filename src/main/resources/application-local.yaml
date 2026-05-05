@@ -46,7 +46,7 @@ springdoc:
     - group: 'default'
       paths-to-match: '/**'
       # 修改一下路径，把controller的包的路径写在下面
-      packages-to-scan: com/tzl/llongaiagent/controller
+      packages-to-scan: com.tzl.llongaiagent.controller
   # knife4j的增强配置，不需要增强可以不配
 knife4j:
   enable: true

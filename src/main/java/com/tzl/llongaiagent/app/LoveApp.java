@@ -21,6 +21,7 @@ import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -46,13 +47,13 @@ public class LoveApp {
     public LoveApp(ChatModel chatModel){
 
         // 1.初始化基于内存的对话记忆仓库
-//        ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
+        ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
 
         // 2.初始化基于文件的对话记忆仓库
         String fileDir = System.getProperty("user.dir") + "/tmp/chat-memory";
         FileBasedChatMemoryRepository fileBasedChatMemoryRepository = new FileBasedChatMemoryRepository(fileDir);
 
-        // 以下部分是通用的，只需改变上面的仓库的初始化，以及选择用哪个仓库即可.
+        // 以下部分是通用的，只需改变上面的仓库的初始化，以及选择用哪个仓库即可,滑动窗口记忆
         ChatMemory chatMemory = MessageWindowChatMemory.builder()
                 // 对于上面的仓库的切换，只需在这里把.chatMemoryRepository里面的参数改变即可
                 // 解耦了
@@ -84,6 +85,44 @@ public class LoveApp {
 //        仅对单次请求生效
 //        chatClient.prompt()
 //                .stream()
+
+    }
+
+    /***
+     * AI 基础对话，支持多轮记忆，SSE 流式输出
+     * @param userMessage
+     * @param conversationId
+     * @return
+     */
+    public Flux<String> doChatByStream(String userMessage, String conversationId) {
+
+        // ! 这里的1,2,3 都是定义在类内的,有些是通过构造函数赋值的,但是这里已经被定义或赋值过了,
+        // 所以在这里我们重新定义一下,这是完整的代码操作
+
+        // 1.建一个聊天记忆仓库 基于内存的记忆
+        ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
+
+        // 2.聊天记忆接口,滑动窗口聊天记忆,把刚刚的仓库添加进来,设置最大消息数量
+        ChatMemory chatMemory = MessageWindowChatMemory.builder()
+                .chatMemoryRepository(chatMemoryRepository)
+                .maxMessages(10)
+                .build();
+
+        // 3.聊天记忆顾问,把聊天记忆添加进来
+        MessageChatMemoryAdvisor memoryAdvisor = MessageChatMemoryAdvisor
+                .builder(chatMemory)
+                .build();
+
+        // 返回流式数据
+        return chatClient
+                .prompt()
+                .user(userMessage)
+                .advisors(spec -> spec.param(
+                        ChatMemory.CONVERSATION_ID, conversationId
+                ))
+                .advisors(memoryAdvisor)
+                .stream()
+                .content();
 
     }
 
